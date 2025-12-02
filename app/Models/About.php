@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-    use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
-    class About extends Model {
-        protected $fillable = [
+class About extends Model
+{
+    protected $fillable = [
         'name',
         'description',
         'email',
@@ -15,12 +16,12 @@ namespace App\Models;
         'linkedin_link',
         'whatsapp_link',
         'github_link',
-        ];
+    ];
 
-        protected function casts(): array
-        {
+    protected function casts(): array
+    {
         return [
-        'description' => 'array',
+            'description' => 'array',
         ];
-        }
     }
+}

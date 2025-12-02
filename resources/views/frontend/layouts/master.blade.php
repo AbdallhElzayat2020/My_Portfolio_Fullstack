@@ -6,6 +6,14 @@
 
 <body>
 
+    <!-- Page Loader -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            {{-- <div class="loader-text">Loading...</div> --}}
+        </div>
+    </div>
+
     <div id="page-content">
         <!-- header part start -->
         @include('frontend.layouts.navbar')

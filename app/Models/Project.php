@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-    use Illuminate\Database\Eloquent\Model;
-    use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-    class Project extends Model {
-        protected $fillable = [
+class Project extends Model
+{
+    protected $fillable = [
         'short_title',
         'full_title',
         'short_desc',
@@ -15,10 +16,10 @@ namespace App\Models;
         'category_id',
         'status',
         'link',
-        ];
+    ];
 
-        public function category(): BelongsTo
-        {
+    public function category(): BelongsTo
+    {
         return $this->belongsTo(Category::class);
-        }
     }
+}

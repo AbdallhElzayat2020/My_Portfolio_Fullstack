@@ -63,8 +63,8 @@
                     <div class="card-body">
                         <!-- Logo -->
                         <div class="app-brand justify-content-center mb-4 mt-2">
-                            <a href="{{ route('home') }}" class="app-brand-link gap-2">
-                                <img src="{{ asset('assets/frontend/images/logo_main.png') }}" alt="Logo"
+                            <a href="{{ route('website.home') }}" class="app-brand-link gap-2">
+                                <img src="{{ asset('assets/frontend/img/logo.ico') }}" alt="Logo"
                                     width="100">
                             </a>
                         </div>
@@ -112,12 +112,12 @@
                                 @enderror
                             </div>
                             <div class="mb-3 form-password-toggle">
-                                <div class="d-flex justify-content-between">
+                                {{-- <div class="d-flex justify-content-between">
                                     <label class="form-label" for="password">Password</label>
                                     <a href="{{ route('password.request') }}">
                                         <small>Forgot Password?</small>
                                     </a>
-                                </div>
+                                </div> --}}
                                 <div class="input-group input-group-merge">
                                     <input type="password" name="password" value="{{ old('password') }}" id="password"
                                         class="form-control @error('password') is-invalid @enderror"

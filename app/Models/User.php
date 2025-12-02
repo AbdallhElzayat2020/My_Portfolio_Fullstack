@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
     ];
 
     /**
@@ -44,5 +45,48 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the role that owns the user.
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    /**
+     * Check if user is admin.
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        if (!$this->role) {
+            return false;
+        }
+
+        return $this->role->isAdmin();
+    }
+
+    /**
+     * Check if user has a specific permission.
+     *
+     * @param int $permissionId
+     * @return bool
+     */
+    public function hasPermission(int $permissionId): bool
+    {
+        // Admin has all permissions
+        if ($this->isAdmin()) {
+            return true;
+        }
+
+        // Check if user's role has the permission
+        if (!$this->role) {
+            return false;
+        }
+
+        return $this->role->hasPermission($permissionId);
     }
 }

@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-    use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
-    class Testimonial extends Model {
-        protected $fillable = [
+class Testimonial extends Model
+{
+    protected $fillable = [
         'client_name',
         'client_description',
         'status',
         'job',
-        ];
-    }
+    ];
+}

@@ -53,8 +53,8 @@
                                             </span>
                                         </div>
                                         <div class="dropdown">
-                                            <button class="btn p-0" type="button" data-bs-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
+                                            <button class="btn p-0" type="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
                                                 <i class="ti ti-dots-vertical ti-sm text-muted"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end">
