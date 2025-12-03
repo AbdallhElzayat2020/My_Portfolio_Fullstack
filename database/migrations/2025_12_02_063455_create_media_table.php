@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('mediaable_id');
             $table->string('mediaable_type');
-            $table->string('type');
+            $table->string('file_name');
             $table->timestamps();
         });
     }

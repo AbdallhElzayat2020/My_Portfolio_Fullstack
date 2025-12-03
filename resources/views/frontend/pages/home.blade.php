@@ -15,59 +15,36 @@
                             <div class="col-lg-12">
                                 <div class="card expertise-card">
                                     <div class="card-body">
-                                        <h3 class="card-title">My Expert Area
+                                        <h3 class="card-title">
+                                            My Expert Area
                                         </h3>
                                         <div class="expertise-main mt-24">
                                             <div class="row g-3">
-
-                                                <div class="col-xl-4 col-md-4 col-sm-6 col-6">
-                                                    <div class="expertise-item">
-                                                        <div class="image text-center">
-                                                            <img src="{{asset('assets/frontend/img/skills/bootstrap.svg')}}"
-                                                                alt="figma">
-                                                        </div>
-                                                        <div class="text">
-                                                            <h4 class="title">Figma</h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-4 col-sm-6 col-6">
-                                                    <div class="expertise-item">
-                                                        <div class="image text-center">
-                                                            <img src="{{asset('assets/frontend/img/skills/CSS.svg')}}"
-                                                                alt="figma">
-                                                        </div>
-                                                        <div class="text">
-                                                            <h4 class="title">CSS</h4>
+                                                @forelse($tools ?? [] as $tool)
+                                                    <div class="col-xl-4 col-md-4 col-sm-6 col-6">
+                                                        <div class="expertise-item">
+                                                            <div class="image text-center">
+                                                                @if ($tool->image)
+                                                                    <img src="{{ $tool->image->url }}" alt="{{ $tool->name }}"
+                                                                        class="img-fluid" style="max-width: 40px;">
+                                                                @else
+                                                                    <span
+                                                                        class="badge bg-label-primary rounded-circle d-inline-flex align-items-center justify-content-center"
+                                                                        style="width: 40px; height: 40px; font-size: 16px;">
+                                                                        {{ strtoupper(mb_substr($tool->name, 0, 1)) }}
+                                                                    </span>
+                                                                @endif
+                                                            </div>
+                                                            <div class="text mt-2">
+                                                                <h4 class="title">{{ $tool->name }}</h4>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-4 col-sm-6 col-6">
-                                                    <div class="expertise-item">
-                                                        <div class="image text-center">
-                                                            <img src="{{asset('assets/frontend/img/skills/figma.svg')}}"
-                                                                alt="figma">
-                                                        </div>
-                                                        <div class="text">
-                                                            <h4 class="title">Figma</h4>
-                                                        </div>
+                                                @empty
+                                                    <div class="col-12">
+                                                        <p class="text-muted mb-0">No tools added yet.</p>
                                                     </div>
-                                                </div>
-
-                                                <div class="col-xl-4 col-md-4 col-sm-6 col-6">
-                                                    <div class="expertise-item">
-                                                        <div class="image text-center">
-                                                            <img src="{{asset('assets/frontend/img/skills/git.svg')}}"
-                                                                alt="figma">
-                                                        </div>
-                                                        <div class="text">
-                                                            <h4 class="title">Git</h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
+                                                @endforelse
                                             </div>
                                         </div>
                                     </div>

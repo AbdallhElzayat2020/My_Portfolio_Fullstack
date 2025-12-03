@@ -9,7 +9,8 @@ class Tool extends Model
 {
     public function image(): MorphOne
     {
-        return $this->morphOne(Media::class, 'imageable');
+        // mediaable_* columns are used in media table
+        return $this->morphOne(Media::class, 'mediaable');
     }
     protected $fillable = [
         'name',

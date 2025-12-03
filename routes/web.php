@@ -18,7 +18,8 @@ Route::name('website.')->group(function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
-    Route::get('/services', [ServiceController::class, 'index'])->name('services');
+    // Public website services page (different URL from dashboard services to avoid conflict)
+    Route::get('/services-page', [ServiceController::class, 'index'])->name('services');
     Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
     // Route::get('/portfolio-details/{slug}', [PortfolioController::class, 'showDetails'])->name('portfolio-details');
     Route::get('/portfolio-details', [PortfolioController::class, 'showDetails'])->name('portfolio-details');

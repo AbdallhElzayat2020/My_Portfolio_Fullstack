@@ -41,7 +41,53 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
+        // Custom public disks under public/uploads/{section}
+        'tools' => [
+            'driver' => 'local',
+            'root' => public_path('uploads/tools'),
+            'url' => env('APP_URL') . '/uploads/tools',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
+        'projects_images' => [
+            'driver' => 'local',
+            'root' => public_path('uploads/projects'),
+            'url' => env('APP_URL') . '/uploads/projects',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
+        'brands_logos' => [
+            'driver' => 'local',
+            'root' => public_path('uploads/brands'),
+            'url' => env('APP_URL') . '/uploads/brands',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
+        'blogs_images' => [
+            'driver' => 'local',
+            'root' => public_path('uploads/blogs'),
+            'url' => env('APP_URL') . '/uploads/blogs',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
+        'services_images' => [
+            'driver' => 'local',
+            'root' => public_path('uploads/services'),
+            'url' => env('APP_URL') . '/uploads/services',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,

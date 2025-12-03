@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Project extends Model
 {
+
+
     protected $fillable = [
         'short_title',
         'full_title',
@@ -17,6 +20,11 @@ class Project extends Model
         'status',
         'link',
     ];
+
+    public function image(): MorphMany
+    {
+        return $this->morphMany(Media::class, 'imageable');
+    }
 
     public function category(): BelongsTo
     {

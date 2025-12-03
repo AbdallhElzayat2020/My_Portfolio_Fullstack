@@ -78,7 +78,7 @@
             </li>
         @endif
 
-        @if (auth()->user()->isAdmin() || auth()->user()->hasPermission(10))
+        @if (auth()->user()->isAdmin())
             <li class="menu-item {{ \App\Helpers\setSidebarActive(['technologies.*'], 'active open') }}">
                 <a href="{{ route('technologies.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons ti ti-cpu"></i>

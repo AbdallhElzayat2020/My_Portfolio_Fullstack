@@ -687,7 +687,7 @@ p {
 }
 
 .expertise-card {
-    height: 299px;
+    height: 100%;
 }
 
 .expertise-card .expertise-item {
@@ -2252,7 +2252,7 @@ p {
 }
 
 .dark-theme .expertise-card .expertise-item .image {
-    background-color: var(--dark-theme-black);
+    background-color: #f1f1f1;
 }
 
 .dark-theme .expertise-card .expertise-item .text .title {
