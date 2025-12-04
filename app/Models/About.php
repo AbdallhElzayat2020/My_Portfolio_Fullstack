@@ -28,6 +28,6 @@ class About extends Model
 
     public function image(): MorphOne
     {
-        return $this->morphOne(Media::class, 'imageable');
+        return $this->morphOne(Media::class, 'mediaable');
     }
 }

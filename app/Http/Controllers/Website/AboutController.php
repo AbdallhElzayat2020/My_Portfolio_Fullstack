@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Website;
 
-use App\Http\Controllers\Controller;
+use App\Models\About;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AboutController extends Controller
 {

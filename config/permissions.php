@@ -23,9 +23,9 @@ return [
             'route' => 'faqs.index',
         ],
         5 => [
-            'name' => 'Achievements',
-            'description' => 'Manage achievements',
-            'route' => 'achievements.index',
+            'name' => 'About',
+            'description' => 'Manage about information',
+            'route' => 'abouts.index',
         ],
         6 => [
             'name' => 'Testimonials',

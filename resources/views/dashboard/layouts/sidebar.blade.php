@@ -79,6 +79,24 @@
         @endif
 
         @if (auth()->user()->isAdmin())
+            <li class="menu-item {{ \App\Helpers\setSidebarActive(['brands.*'], 'active open') }}">
+                <a href="{{ route('brands.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-building-store"></i>
+                    <div data-i18n="Brands">Brands</div>
+                </a>
+            </li>
+        @endif
+
+        @if (auth()->user()->isAdmin() || auth()->user()->hasPermission(4))
+            <li class="menu-item {{ \App\Helpers\setSidebarActive(['faqs.*'], 'active open') }}">
+                <a href="{{ route('faqs.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-help"></i>
+                    <div data-i18n="FAQs">FAQs</div>
+                </a>
+            </li>
+        @endif
+
+        @if (auth()->user()->isAdmin())
             <li class="menu-item {{ \App\Helpers\setSidebarActive(['technologies.*'], 'active open') }}">
                 <a href="{{ route('technologies.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons ti ti-cpu"></i>
@@ -88,10 +106,10 @@
         @endif
 
         @if (auth()->user()->isAdmin() || auth()->user()->hasPermission(5))
-            <li class="menu-item {{ \App\Helpers\setSidebarActive(['achievements.*'], 'active open') }}">
-                <a href="{{ route('achievements.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-trophy"></i>
-                    <div data-i18n="Achievements">Achievements</div>
+            <li class="menu-item {{ \App\Helpers\setSidebarActive(['abouts.*'], 'active open') }}">
+                <a href="{{ route('abouts.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-user"></i>
+                    <div data-i18n="About">About</div>
                 </a>
             </li>
         @endif
@@ -99,8 +117,8 @@
         @if (auth()->user()->isAdmin() || auth()->user()->hasPermission(14))
             <li class="menu-item {{ \App\Helpers\setSidebarActive(['main-steps.*'], 'active open') }}">
                 <a href="{{ route('main-steps.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons ti ti-list-check"></i>
-                    <div data-i18n="Main Steps">Main Steps</div>
+                    <i class="menu-icon tf-icons ti ti-numbers"></i>
+                    <div data-i18n="Numbers">Numbers / Statistics</div>
                 </a>
             </li>
         @endif

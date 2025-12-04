@@ -15,7 +15,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('achievements.update', 1) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('abouts.update', 1) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -34,8 +34,6 @@
                             <textarea id="intro" name="intro" rows="4"
                                 class="form-control @error('intro') is-invalid @enderror"
                                 required>{{ old('intro', $about->description['intro'] ?? 'A Passionate Fullstack Laravel Developer having 4 years of Experiences. Worked as a sole developer and in small teams, reporting to senior developers and product managers. Worked with people from all around the world and in different time zones, so I\'m confident in my communication skills.') }}</textarea>
-                            <small class="text-muted">You can use basic HTML tags like &lt;span&gt; for
-                                highlighting.</small>
                             @error('intro')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -140,18 +138,28 @@
                         <div class="mb-3">
                             <label for="image" class="form-label">Profile Image</label>
                             <input type="file" id="image" name="image"
-                                class="form-control @error('image') is-invalid @enderror" accept=".jpg,.jpeg,.png,.webp">
+                                class="form-control @error('image') is-invalid @enderror" accept=".jpg,.jpeg,.png,.webp"
+                                onchange="previewImage(this)">
                             @error('image')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
 
-                            @if (!empty($about?->image?->url))
-                                <div class="mt-2">
+                            <div class="mt-2">
+                                @if (!empty($about?->image?->url))
                                     <p class="mb-1">Current Image:</p>
-                                    <img src="{{ $about->image->url }}" alt="{{ $aboutName ?? 'Profile image' }}"
-                                        style="max-width: 100px;" class="border rounded">
-                                </div>
-                            @endif
+                                    <img id="currentImage" src="{{ $about->image->url }}"
+                                        alt="{{ $about->name ?? 'Profile image' }}"
+                                        style="max-width: 150px; max-height: 150px; object-fit: cover;" class="border rounded">
+                                @else
+                                    <p class="mb-1 text-muted">No image uploaded yet</p>
+                                    <img id="currentImage" src="" alt="Preview"
+                                        style="max-width: 150px; max-height: 150px; object-fit: cover; display: none;"
+                                        class="border rounded">
+                                @endif
+                                <img id="imagePreview" src="" alt="Preview"
+                                    style="max-width: 150px; max-height: 150px; object-fit: cover; display: none; margin-top: 10px;"
+                                    class="border rounded">
+                            </div>
                         </div>
 
                         <div class="d-flex gap-2">
@@ -164,4 +172,114 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function previewImage(input) {
+            const preview = document.getElementById('imagePreview');
+            const currentImage = document.getElementById('currentImage');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    if (currentImage) {
+                        currentImage.style.display = 'none';
+                    }
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                preview.style.display = 'none';
+                if (currentImage && currentImage.src) {
+                    currentImage.style.display = 'block';
+                }
+            }
+        }
+    </script>
 @endsection
+
+@push('js')
+    <script>
+        $(document).ready(function () {
+            if (typeof $.fn.summernote === 'undefined') {
+                console.error('Summernote is not loaded!');
+                return;
+            }
+
+            $('#intro').summernote({
+                height: 300,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ],
+                placeholder: 'Write intro text...',
+                tabsize: 2,
+                focus: false,
+                dialogsInBody: true,
+                popover: {
+                    image: [
+                        ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                        ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                        ['remove', ['removeMedia']]
+                    ],
+                    link: [
+                        ['link', ['linkDialogShow', 'unlink']]
+                    ],
+                    table: [
+                        ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+                        ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+                    ]
+                }
+            });
+
+            $('#experience').summernote({
+                height: 300,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ],
+                placeholder: 'Write experience text...',
+                tabsize: 2,
+                focus: false,
+                dialogsInBody: true
+            });
+
+            $(document).on('click', '.note-btn-group .dropdown-toggle', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var $this = $(this);
+                var $group = $this.closest('.note-btn-group');
+                var $menu = $group.find('.note-dropdown-menu');
+
+                $('.note-btn-group').not($group).removeClass('open');
+                $('.note-dropdown-menu').not($menu).removeClass('open').hide();
+
+                $group.toggleClass('open');
+                $menu.toggleClass('open').toggle();
+            });
+
+            $(document).on('click', function (e) {
+                if (!$(e.target).closest('.note-btn-group').length) {
+                    $('.note-btn-group').removeClass('open');
+                    $('.note-dropdown-menu').removeClass('open').hide();
+                }
+            });
+        });
+    </script>
+@endpush

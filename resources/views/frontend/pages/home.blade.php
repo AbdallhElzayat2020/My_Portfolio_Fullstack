@@ -22,8 +22,8 @@
                                             <div class="row g-3">
                                                 @forelse(($tools ?? collect()) as $tool)
                                                     @php
-                                                        $toolName = data_get($tool, 'name', '');
-                                                        $toolImageUrl = data_get($tool, 'image.url');
+    $toolName = data_get($tool, 'name', '');
+    $toolImageUrl = data_get($tool, 'image.url');
                                                     @endphp
                                                     <div class="col-xl-4 col-md-4 col-sm-6 col-6">
                                                         <div class="expertise-item">
@@ -61,7 +61,12 @@
                     <div class="col-xl-4">
                         <div class="card card-projects">
                             <div class="card-body">
-
+                                <div class="available-btn mb-3 text-white">
+                                    <span>
+                                        <i class="fas fa-circle" style="color: var(--primary);"></i>
+                                        Available For Hire
+                                    </span>
+                                </div>
                                 <h3 class="card-title">Recent Projects <a class="link-btn" href="#">All
                                         Projects
                                         <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -77,46 +82,36 @@
                                     </a></h3>
                                 <div class="projects-main mt-24">
                                     <div class="row g-4 parent-container">
-                                        <div class="col-lg-12">
-                                            <div class="project-item">
-                                                <div class="image">
-                                                    <img src="{{ asset('assets/frontend/img/projects/project-1.png') }}"
-                                                        alt="project-1" class="img-fluid w-100">
-                                                    <a href="{{ asset('assets/frontend/img/projects/project-1.png') }}"
-                                                        class="gallery-popup full-image-preview parent-container">
-                                                        <svg class="icon" xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 20 20" fill="none" stroke="currentColor"
-                                                            stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="1.5">
-                                                            <path d="M10 4.167v11.666M4.167 10h11.666"></path>
-                                                        </svg>
-                                                    </a>
-                                                    <div class="info">
-                                                        <span class="category">Product Design</span>
+                                        @forelse($homeProjects as $project)
+                                            <div class="col-lg-12">
+                                                <div class="project-item">
+                                                    <div class="image">
+                                                        <a href="{{ route('website.portfolio-details', $project->slug) }}">
+                                                            <img src="{{ $project->image->first()->url }}" alt="{{ $project->full_title }}" class="img-fluid w-100">
+                                                        </a>
+                                                        <a href="{{ $project->image->first()->url }}"
+                                                            class="gallery-popup full-image-preview parent-container">
+                                                            <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="1.5">
+                                                                <path d="M10 4.167v11.666M4.167 10h11.666"></path>
+                                                            </svg>
+                                                        </a>
+                                                        <div class="info">
+                                                            <span class="category">
+                                                                {{ $project->category->name ?? '-' }}
+                                                            </span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="project-item">
-                                                <div class="image">
-                                                    <img src="{{ asset('assets/frontend/img/projects/project-2.png') }}"
-                                                        alt="project-2" class="img-fluid w-100">
-                                                    <a href="{{ asset('assets/frontend/img/projects/project-2.png') }}"
-                                                        class="gallery-popup full-image-preview parent-container">
-                                                        <svg class="icon" xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 20 20" fill="none" stroke="currentColor"
-                                                            stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="1.5">
-                                                            <path d="M10 4.167v11.666M4.167 10h11.666"></path>
-                                                        </svg>
-                                                    </a>
-                                                    <div class="info">
-                                                        <span class="category">Product Design</span>
-                                                    </div>
-                                                </div>
+                                        @empty
+                                            <div class="col-12">
+                                                <p class="text-muted mb-0">No projects added yet.</p>
                                             </div>
-                                        </div>
+                                        @endforelse
+
 
                                     </div>
                                 </div>
@@ -132,7 +127,7 @@
                             <div class="card services-card">
                                 <div class="card-body">
                                     <h3 class="card-title">Services I Offered
-                                        <a class="link-btn" href="#"> See All Services
+                                        <a class="link-btn" href="{{ route('website.services') }}"> See All Services
                                             <svg class="icon" width="20" height="20" viewBox="0 0 20 20"
                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M4.16699 10H15.8337" stroke="#4770FF" stroke-width="1.5"
@@ -145,53 +140,38 @@
 
                                         </a>
                                     </h3>
-                                    {{-- services featired --}}
+                                    {{-- services featured --}}
                                     <div class="services-main mt-24">
                                         <div class="row g-4">
-                                            <div class="col-md-3 col-sm-6 col-6">
-                                                <div class="services-item text-center">
-                                                    <div class="image">
-                                                        <img src="{{ asset('assets/frontend/img/icons/ui-ux.svg') }}"
-                                                            alt="ui-ux">
-                                                    </div>
-                                                    <div class="text">
-                                                        <h3 class="title">UI UX Design</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3 col-sm-6 col-6">
-                                                <div class="services-item text-center">
-                                                    <div class="image">
-                                                        <img src="{{ asset('assets/frontend/img/icons/app.svg') }}"
-                                                            alt="app">
-                                                    </div>
-                                                    <div class="text">
-                                                        <h3 class="title">Mobile App</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3 col-sm-6 col-6">
-                                                <div class="services-item text-center">
-                                                    <div class="image">
-                                                        <img src="{{ asset('assets/frontend/img/icons/prd-design.svg') }}"
-                                                            alt="prd-design">
-                                                    </div>
-                                                    <div class="text">
-                                                        <h3 class="title">Product Design</h3>
+                                            @forelse(($services ?? collect()) as $service)
+                                                @php
+    $serviceName = data_get($service, 'name', '');
+    $serviceIconUrl = data_get($service, 'image.url');
+                                                @endphp
+                                                <div class="col-md-3 col-sm-6 col-6">
+                                                    <div class="services-item text-center">
+                                                        <div class="image">
+                                                            @if ($serviceIconUrl)
+                                                                <img src="{{ $serviceIconUrl }}"
+                                                                    alt="{{ $serviceName }}">
+                                                            @else
+                                                                <span
+                                                                    class="badge bg-label-primary rounded-circle d-inline-flex align-items-center justify-content-center"
+                                                                    style="width: 40px; height: 40px; font-size: 16px;">
+                                                                    {{ strtoupper(mb_substr($serviceName, 0, 1)) }}
+                                                                </span>
+                                                            @endif
+                                                        </div>
+                                                        <div class="text">
+                                                            <h3 class="title">{{ $serviceName }}</h3>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-3 col-sm-6 col-6">
-                                                <div class="services-item text-center">
-                                                    <div class="image">
-                                                        <img src="{{ asset('assets/frontend/img/icons/branding.svg') }}"
-                                                            alt="branding">
-                                                    </div>
-                                                    <div class="text">
-                                                        <h3 class="title">Branding</h3>
-                                                    </div>
+                                            @empty
+                                                <div class="col-12">
+                                                    <p class="text-muted mb-0">No services added yet.</p>
                                                 </div>
-                                            </div>
+                                            @endforelse
                                         </div>
                                     </div>
 

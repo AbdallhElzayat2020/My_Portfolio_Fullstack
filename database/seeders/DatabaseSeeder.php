@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             AboutSeeder::class,
             ToolSeeder::class,
+            CategorySeeder::class,
+            ServiceSeeder::class,
+            ProjectSeeder::class,
         ]);
 
         // Get admin role

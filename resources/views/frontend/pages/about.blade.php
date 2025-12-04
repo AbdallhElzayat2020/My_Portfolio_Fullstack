@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="row g-4">
                     {{-- intro --}}
-                    @include('frontend.components.intro-section')
+                    @include('frontend.components.intro-section', ['about' => $about])
 
                     <div class="col-xl-8">
                         <div class="card content-box-card">
@@ -17,9 +17,9 @@
                                 <div class="top-info">
                                     <div class="text">
                                         <h1 class="main-title">Hi, This Is <span>Abdullah Elzayat</span> 👋</h1>
-                                        <p>A Passionate <b>Full Stack Developer</b> 🖥️ & <b>Product Designer</b>
+                                        <p>A Passionate <b>Full Stack Developer</b> 🖥️
                                             having
-                                            <b>12 years</b> of Experiences over 24+ Country Worldwide.
+                                            <b>4 years</b> of Experiences over 10+ Country Worldwide.
                                         </p>
                                     </div>
                                     <div class="available-btn">
@@ -29,20 +29,33 @@
                                 {{-- counter area --}}
                                 <div class="counter-area">
                                     <div class="counter">
-                                        <div class="counter-item">
-                                            <h3 class="number">40+</h3>
-                                            <p class="subtitle">Year of Experience</p>
-                                        </div>
-                                        <div class="counter-item">
-                                            <h3 class="number">86+</h3>
-                                            <p class="subtitle">Project Completed
-                                            </p>
-                                        </div>
-                                        <div class="counter-item">
-                                            <h3 class="number">72+</h3>
-                                            <p class="subtitle">Happy Client
-                                            </p>
-                                        </div>
+                                        @if(isset($numbers) && $numbers)
+                                            <div class="counter-item">
+                                                <h3 class="number">{{ $numbers->experience_year }}</h3>
+                                                <p class="subtitle">Year of Experience</p>
+                                            </div>
+                                            <div class="counter-item">
+                                                <h3 class="number">{{ $numbers->complete_project }}</h3>
+                                                <p class="subtitle">Project Completed</p>
+                                            </div>
+                                            <div class="counter-item">
+                                                <h3 class="number">{{ $numbers->happy_client }}</h3>
+                                                <p class="subtitle">Happy Client</p>
+                                            </div>
+                                        @else
+                                            <div class="counter-item">
+                                                <h3 class="number">4+</h3>
+                                                <p class="subtitle">Year of Experience</p>
+                                            </div>
+                                            <div class="counter-item">
+                                                <h3 class="number">86+</h3>
+                                                <p class="subtitle">Project Completed</p>
+                                            </div>
+                                            <div class="counter-item">
+                                                <h3 class="number">72+</h3>
+                                                <p class="subtitle">Happy Client</p>
+                                            </div>
+                                        @endif
                                     </div>
                                     <div class="circle-area">
                                         <div class="circle-text">
@@ -71,7 +84,7 @@
                                 {{-- client feedback --}}
                                 @include('frontend.components.client-feedback')
 
-                                @include('frontend.components.awards-recognitions')
+                                {{-- @include('frontend.components.awards-recognitions') --}}
                                 {{-- awards and recognitions --}}
 
 

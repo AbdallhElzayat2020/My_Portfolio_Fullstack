@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Tool;
+use App\Models\Service;
+use App\Models\Project;
 
 class HomeController extends Controller
 {
@@ -14,8 +16,21 @@ class HomeController extends Controller
             ->where('status', 'active')
             ->get();
 
-        $about = About::with('image')->latest()->first();
+        // $about = About::with(['image'])->latest()->first();
 
-        return view('frontend.pages.home', compact('tools', 'about'));
+        $services = Service::with('image')
+            ->where('status', 'active')
+            ->orderByDesc('id')
+            ->take(4)
+            ->get();
+
+        $homeProjects = Project::with(['image', 'category'])
+            ->where('status', 'active')
+            ->where('in_home', true)
+            ->where('is_featured', true)
+            ->take(3)
+            ->get();
+
+        return view('frontend.pages.home', compact('tools', 'services', 'homeProjects'));
     }
 }

@@ -13,6 +13,8 @@ use App\Http\Controllers\Dashboard\{
     NumberController,
     RoleController,
     UserController,
+    BrandController,
+    FaqController,
 };
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -87,6 +89,17 @@ Route::middleware(['auth'])->group(function () {
         'destroy' => 'testimonials.destroy',
     ]);
 
+    // Brands Routes
+    Route::resource('brands', BrandController::class)->names([
+        'index' => 'brands.index',
+        'create' => 'brands.create',
+        'store' => 'brands.store',
+        'show' => 'brands.show',
+        'edit' => 'brands.edit',
+        'update' => 'brands.update',
+        'destroy' => 'brands.destroy',
+    ]);
+
     // Tools/Technologies Routes
     Route::resource('technologies', ToolController::class)->names([
         'index' => 'technologies.index',
@@ -100,13 +113,13 @@ Route::middleware(['auth'])->group(function () {
 
     // About Routes
     Route::resource('abouts', AboutController::class)->names([
-        'index' => 'achievements.index',
-        'create' => 'achievements.create',
-        'store' => 'achievements.store',
-        'show' => 'achievements.show',
-        'edit' => 'achievements.edit',
-        'update' => 'achievements.update',
-        'destroy' => 'achievements.destroy',
+        'index' => 'abouts.index',
+        'create' => 'abouts.create',
+        'store' => 'abouts.store',
+        'show' => 'abouts.show',
+        'edit' => 'abouts.edit',
+        'update' => 'abouts.update',
+        'destroy' => 'abouts.destroy',
     ]);
 
     // Numbers Routes
@@ -126,9 +139,16 @@ Route::middleware(['auth'])->group(function () {
         return redirect()->route('dashboard.home');
     })->name('partners.index');
 
-    Route::get('/faqs', function () {
-        return redirect()->route('dashboard.home');
-    })->name('faqs.index');
+    // FAQs Routes
+    Route::resource('faqs', FaqController::class)->names([
+        'index' => 'faqs.index',
+        'create' => 'faqs.create',
+        'store' => 'faqs.store',
+        'show' => 'faqs.show',
+        'edit' => 'faqs.edit',
+        'update' => 'faqs.update',
+        'destroy' => 'faqs.destroy',
+    ]);
 
     Route::get('/industrials', function () {
         return redirect()->route('dashboard.home');

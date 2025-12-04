@@ -11,8 +11,8 @@ return new class extends Migration {
             $table->id();
             $table->string('full_name');
             $table->string('short_name');
-            $table->string('short_desc');
-            $table->json('full_desc');
+            $table->longText('short_desc');
+            $table->longText('full_desc');
             $table->string('slug');
             $table->foreignId('category_id')->constrained('categories');
             $table->enum('status', ['active', 'inactive'])->default('active');

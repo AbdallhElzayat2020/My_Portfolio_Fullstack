@@ -9,10 +9,10 @@ return new class extends Migration {
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('short_title');
-            $table->string('full_title');
-            $table->string('short_desc');
-            $table->string('full_desc');
+            $table->longText('short_title');
+            $table->longText('full_title');
+            $table->longText('short_desc');
+            $table->longText('full_desc');
             $table->string('slug');
             $table->foreignId('category_id')->constrained('categories');
             $table->enum('status', ['active', 'inactive'])->default('active');

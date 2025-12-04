@@ -12,9 +12,10 @@ return new class extends Migration {
             $table->string('name');
             $table->string('email');
             $table->string('subject')->nullable();
-            $table->string('budget');
+            $table->string('phone_number');
             $table->longText('message');
             $table->enum('status', ['pending', 'read'])->default('pending');
+            $table->foreignId('service_id')->constrained('services');
             $table->timestamps();
         });
     }

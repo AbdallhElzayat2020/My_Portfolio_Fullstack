@@ -8,19 +8,20 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Blog extends Model
 {
-    public function image(): MorphOne
-    {
-        return $this->morphOne(Media::class, 'imageable');
-    }
     protected $fillable = [
         'full_name',
         'short_name',
         'short_desc',
-        'full_name',
+        'full_desc',
         'slug',
         'category_id',
         'status',
     ];
+
+    public function image(): MorphOne
+    {
+        return $this->morphOne(Media::class, 'mediaable');
+    }
 
     public function category(): BelongsTo
     {

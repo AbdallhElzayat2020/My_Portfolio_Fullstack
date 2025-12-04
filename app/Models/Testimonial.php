@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Testimonial extends Model
 {
@@ -12,4 +13,9 @@ class Testimonial extends Model
         'status',
         'job',
     ];
+
+    public function image(): MorphOne
+    {
+        return $this->morphOne(Media::class, 'mediaable');
+    }
 }

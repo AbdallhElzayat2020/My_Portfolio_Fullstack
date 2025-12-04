@@ -23,7 +23,7 @@
                                 <div class="contact-area">
                                     <div class="leave-comments-area">
                                         <div class="comments-box">
-                                            <form id="contact-form" action="{{ route('website.contact') }}" method="POST">
+                                            <form action="{{ route('website.contact.store') }}" method="POST">
                                                 @csrf
                                                 <div class="row gx-3">
                                                     <div class="col-md-6">
@@ -60,17 +60,11 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="mb-4">
-                                                            <label class="form-label">Budget</label>
-                                                            <select name="budget" required class="form-select shadow-none">
-                                                                <option disabled selected>Select budget...</option>
-                                                                <option value="$5000">$5000</option>
-                                                                <option value="$5000 - $1000">$5000 - $10000
-                                                                </option>
-                                                                <option value="$10000 - $2000">$10000 - $20000
-                                                                </option>
-                                                                <option value="$20000">$20000+</option>
-                                                            </select>
-                                                            @error('budget')
+                                                            <label class="form-label">Phone Number</label>
+                                                            <input name="phone_number" required type="tel"
+                                                                class="form-control shadow-none"
+                                                                placeholder="Enter your phone number">
+                                                            @error('phone_number')
                                                                 <span class="text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
@@ -78,17 +72,15 @@
                                                     <div class="col-md-12">
                                                         <div class="mb-4">
                                                             <label class="form-label">Services</label>
-                                                            <select name="services" required
+                                                            <select name="service_id" required
                                                                 class="form-select shadow-none">
                                                                 <option disabled selected>Select services...</option>
-                                                                <option value="$5000">$5000</option>
-                                                                <option value="$5000 - $1000">$5000 - $10000
-                                                                </option>
-                                                                <option value="$10000 - $2000">$10000 - $20000
-                                                                </option>
-                                                                <option value="$20000">$20000+</option>
+                                                                @foreach ($services as $service)
+                                                                    <option value="{{ $service->id }}">{{ $service->name }}
+                                                                    </option>
+                                                                @endforeach
                                                             </select>
-                                                            @error('services')
+                                                            @error('service_id')
                                                                 <span class="text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
@@ -121,6 +113,22 @@
                                                     </div>
                                                 </div>
                                             </form>
+                                            @if (session('success'))
+                                                <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                                                    {{ session('success') }}
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                                </div>
+                                            @endif
+                                            @if ($errors->any())
+                                                <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                                    <ul class="mb-0">
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                                </div>
+                                            @endif
                                             <p class="ajax-response mb-0"></p>
                                         </div>
                                     </div>

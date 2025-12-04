@@ -2,25 +2,43 @@
     <div class="card profile-card">
         <div class="card-body">
             <div class="image text-center">
-                <img src="{{asset('assets/frontend/img/Me.jpg')}}" alt="profile">
+                @php
+                    $about = $about ?? null;
+                    // Default values from seeder
+                    $defaultName = 'Abdullah Elzayat';
+                    $defaultIntro = 'A Passionate <span>Fullstack Laravel Developer</span> having <span>4 years</span> of experiences. Worked as a sole developer and in small teams, reporting to senior developers and product managers. Worked with people from all around the world and in different time zones, so I\'m confident in my communication skills.';
+                    $defaultExperience = 'Full-stack web developer with 2 years of <span>Laravel</span> experience, 2 years of <span>React</span> experience, and 5 years of coding experience.';
+                    $defaultEmail = 'abdallhelzayat194@gmail.com';
+                    $defaultPhone = '+201212484233';
+                    $defaultLinks = [
+                        'upwork' => 'https://www.upwork.com/freelancers/~0118efbb6f6aad23b8',
+                        'linkedin' => 'https://www.linkedin.com/in/abdallh-elzayat-924a00259/',
+                        'facebook' => 'https://www.facebook.com/abdalla.elzayat.73/',
+                        'github' => 'https://github.com/AbdallhElzayat2020',
+                        'whatsapp' => 'https://wa.me/201212484233',
+                    ];
+
+                    // Get profile image from database or use default
+                    $profileImage = $about?->image?->url ?? asset('assets/frontend/img/Me.jpg');
+                @endphp
+                <img src="{{ $profileImage }}" alt="profile">
             </div>
             @php
-                $about = $about ?? null;
-                $aboutName = $about->name ?? 'Abdullah Elzayat';
+                $aboutName = $about->name ?? $defaultName;
                 $description = $about->description ?? [];
                 if (is_string($description)) {
                     $description = ['intro' => $description];
                 }
-                $intro = $description['intro'] ?? 'A Passionate <span>Fullstack Laravel Developer</span> having <span>4 years</span> of experiences. Worked as a sole developer and in small teams, reporting to senior developers and product managers. Worked with people from all around the world and in different time zones, so I\'m confident in my communication skills.';
-                $experience = $description['experience'] ?? 'Full-stack web developer with 2 years of <span>Laravel</span> experience, 2 years of <span>React</span> experience, and 5 years of coding experience.';
-                $email = $about->email ?? 'abdallhelzayat194@gmail.com';
-                $phone = $about->phone ?? '+201212484233';
+                $intro = $description['intro'] ?? $defaultIntro;
+                $experience = $description['experience'] ?? $defaultExperience;
+                $email = $about->email ?? $defaultEmail;
+                $phone = $about->phone ?? $defaultPhone;
                 $links = [
-                    'upwork' => $about->upwork_link ?? 'https://www.upwork.com/freelancers/~0118efbb6f6aad23b8',
-                    'linkedin' => $about->linkedin_link ?? 'https://www.linkedin.com/in/abdallh-elzayat-924a00259/',
-                    'facebook' => $about->facebook_link ?? 'https://www.facebook.com/abdalla.elzayat.73/',
-                    'github' => $about->github_link ?? 'https://github.com/AbdallhElzayat2020',
-                    'whatsapp' => $about->whatsapp_link ?? 'https://wa.me/201212484233',
+                    'upwork' => $about->upwork_link ?? $defaultLinks['upwork'],
+                    'linkedin' => $about->linkedin_link ?? $defaultLinks['linkedin'],
+                    'facebook' => $about->facebook_link ?? $defaultLinks['facebook'],
+                    'github' => $about->github_link ?? $defaultLinks['github'],
+                    'whatsapp' => $about->whatsapp_link ?? $defaultLinks['whatsapp'],
                 ];
             @endphp
             <div class="text">

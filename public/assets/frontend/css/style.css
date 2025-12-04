@@ -2222,7 +2222,9 @@ p {
 .dark-theme .services-item .image {
     background-color: var(--dark-theme-bg);
 }
-
+.dark-theme .services-item .image img {
+    width: 50px !important;
+}
 .dark-theme .services-item .text .title {
     color: var(--dark-theme-light-white);
 }

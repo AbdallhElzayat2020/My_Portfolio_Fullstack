@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -12,7 +13,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $contacts = Contact::with('service')->orderByDesc('id')->paginate(15);
+        return view('dashboard.pages.contacts.index', compact('contacts'));
     }
 
     /**
@@ -20,7 +22,8 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        // Not needed - contacts are created from frontend form
+        return redirect()->route('contacts.index');
     }
 
     /**
@@ -28,15 +31,22 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Not needed - contacts are created from frontend form
+        return redirect()->route('contacts.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Contact $contact)
     {
-        //
+        // Mark as read when viewing
+        if ($contact->status === 'pending') {
+            $contact->update(['status' => 'read']);
+        }
+
+        $contact->load('service');
+        return view('dashboard.pages.contacts.show', compact('contact'));
     }
 
     /**
@@ -44,7 +54,8 @@ class ContactController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Not needed - contacts are read-only
+        return redirect()->route('contacts.index');
     }
 
     /**
@@ -52,14 +63,19 @@ class ContactController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Not needed - contacts are read-only
+        return redirect()->route('contacts.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+
+        return redirect()
+            ->route('contacts.index')
+            ->with('success', 'Contact message deleted successfully.');
     }
 }

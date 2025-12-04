@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="row g-4">
 
-                    @include('frontend.components.intro-section')
+                    @include('frontend.components.intro-section', ['about' => $about])
 
                     <div class="col-xl-8">
                         <div class="card content-box-card">
@@ -27,69 +27,44 @@
                                 {{-- services --}}
                                 <div class="services">
                                     <div class="row g-4">
-                                        <div class="col-md-3 col-sm-6 col-6">
-                                            <div class="services-item text-center">
-                                                <div class="image">
-                                                    <img src="{{ asset('assets/frontend/img/icons/ui-ux.svg') }}"
-                                                        alt="ui-ux">
-                                                </div>
-                                                <div class="text">
-                                                    <h3 class="title">UI UX Design</h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-6 col-6">
-                                            <div class="services-item text-center">
-                                                <div class="image">
-                                                    <img src="{{ asset('assets/frontend/img/icons/ui-ux.svg') }}"
-                                                        alt="ui-ux">
-                                                </div>
-                                                <div class="text">
-                                                    <h3 class="title">UI UX Design</h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-6 col-6">
-                                            <div class="services-item text-center">
-                                                <div class="image">
-                                                    <img src="{{ asset('assets/frontend/img/icons/ui-ux.svg') }}"
-                                                        alt="ui-ux">
-                                                </div>
-                                                <div class="text">
-                                                    <h3 class="title">UI UX Design</h3>
+                                        @forelse (($services ?? collect()) as $service)
+                                            @php
+    $serviceName = data_get($service, 'name', '');
+    $serviceIconUrl = data_get($service, 'image.url');
+                                            @endphp
+                                            <div class="col-md-3 col-sm-6 col-6">
+                                                <div class="services-item text-center">
+                                                    <div class="image">
+                                                        @if ($serviceIconUrl)
+                                                            <img src="{{ $serviceIconUrl }}" alt="{{ $serviceName }}">
+                                                        @else
+                                                            <span
+                                                                class="badge bg-label-primary rounded-circle d-inline-flex align-items-center justify-content-center"
+                                                                style="width: 40px; height: 40px; font-size: 16px;">
+                                                                {{ strtoupper(mb_substr($serviceName, 0, 1)) }}
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                    <div class="text">
+                                                        <h3 class="title">{{ $serviceName }}</h3>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-6 col-6">
-                                            <div class="services-item text-center">
-                                                <div class="image">
-                                                    <img src="{{ asset('assets/frontend/img/icons/ui-ux.svg') }}"
-                                                        alt="ui-ux">
-                                                </div>
-                                                <div class="text">
-                                                    <h3 class="title">UI UX Design</h3>
-                                                </div>
+                                        @empty
+                                            <div class="col-12">
+                                                <p class="text-muted mb-0">No services added yet.</p>
                                             </div>
-                                        </div>
-
+                                        @endforelse
                                     </div>
 
+                                    <div class="mt-3">
+                                        {{ $services->links() }}
+                                    </div>
                                 </div>
                                 {{-- working with area --}}
-                                <div class="working-with-area">
-                                    <h2 class="main-common-title">Working With 50+ Brands ✨ Worldwide
-                                    </h2>
-                                    <div class="working-with-main">
-                                        <div class="items">
-                                            <img src="{{ asset('assets/frontend/img/icons/notion.svg') }}" alt="notion">
-                                        </div>
-
-                                    </div>
-                                </div>
+                                @include('frontend.components.brands')
 
                                 @include('frontend.components.client-feedback')
-
-                                @include('frontend.components.awards-recognitions')
 
                                 @include('frontend.components.faqs')
 

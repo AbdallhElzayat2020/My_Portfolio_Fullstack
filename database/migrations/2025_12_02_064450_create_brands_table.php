@@ -10,8 +10,8 @@ return new class extends Migration {
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
             $table->string('brand_name');
-            $table->string('file_name');
-            $table->string('alt_text');
+            $table->string('file_name')->nullable();
+            $table->string('alt_text')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });

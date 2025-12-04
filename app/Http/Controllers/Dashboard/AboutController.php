@@ -20,17 +20,17 @@ class AboutController extends Controller
 
     public function create()
     {
-        return redirect()->route('achievements.index');
+        return redirect()->route('abouts.index');
     }
 
     public function store(Request $request)
     {
-        return redirect()->route('achievements.index');
+        return redirect()->route('abouts.index');
     }
 
     public function show(About $about)
     {
-        return redirect()->route('achievements.index');
+        return redirect()->route('abouts.index');
     }
 
     public function edit()
@@ -73,28 +73,28 @@ class AboutController extends Controller
 
         if ($request->hasFile('image')) {
             if ($about->image) {
-                Storage::disk('public')->delete($about->image->file_name);
+                Storage::disk('about')->delete($about->image->file_name);
                 $about->image->delete();
             }
 
             $file = $request->file('image');
-            $fileName = time() . Str::uuid() . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('uploads/about', $fileName, 'public');
+            $fileName = time() . '_' . Str::uuid() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('', $fileName, 'about');
 
             Media::create([
                 'mediaable_id' => $about->id,
                 'mediaable_type' => About::class,
-                'file_name' => $path,
+                'file_name' => $fileName,
             ]);
         }
 
         return redirect()
-            ->route('achievements.index')
+            ->route('abouts.index')
             ->with('success', 'About information updated successfully.');
     }
 
     public function destroy(About $about)
     {
-        return redirect()->route('achievements.index');
+        return redirect()->route('abouts.index');
     }
 }
