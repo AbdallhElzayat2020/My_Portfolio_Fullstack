@@ -18,7 +18,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Seed roles first
-        $this->call(RoleSeeder::class);
+        $this->call([
+            RoleSeeder::class,
+            AboutSeeder::class,
+            ToolSeeder::class,
+        ]);
 
         // Get admin role
         $adminRole = Role::where('slug', 'admin')->first();

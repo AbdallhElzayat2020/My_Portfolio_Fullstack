@@ -25,6 +25,22 @@
                         </div>
                     @endif
 
+                    {{-- Search input --}}
+                    <form method="GET" action="{{ route('technologies.index') }}" class="row g-2 mb-3">
+                        <div class="col-md-4 ms-auto">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="ti ti-search"></i>
+                                </span>
+                                <input type="text" name="search" class="form-control" placeholder="Search by name..."
+                                    value="{{ $search ?? '' }}">
+                                @if (!empty($search))
+                                    <button type="submit" class="btn btn-outline-secondary">Clear</button>
+                                @endif
+                            </div>
+                        </div>
+                    </form>
+
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>

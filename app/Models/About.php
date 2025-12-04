@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class About extends Model
 {
@@ -23,5 +24,10 @@ class About extends Model
         return [
             'description' => 'array',
         ];
+    }
+
+    public function image(): MorphOne
+    {
+        return $this->morphOne(Media::class, 'imageable');
     }
 }

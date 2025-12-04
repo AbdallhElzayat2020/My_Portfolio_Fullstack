@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
 use App\Models\Tool;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -14,6 +14,8 @@ class HomeController extends Controller
             ->where('status', 'active')
             ->get();
 
-        return view('frontend.pages.home', compact('tools'));
+        $about = About::with('image')->latest()->first();
+
+        return view('frontend.pages.home', compact('tools', 'about'));
     }
 }

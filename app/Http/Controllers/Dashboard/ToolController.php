@@ -14,11 +14,18 @@ class ToolController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tools = Tool::with('image')->paginate(15);
+        $search = $request->query('search');
 
-        return view('dashboard.pages.technologies.index', compact('tools'));
+        $tools = Tool::with('image')
+            ->when($search, function ($query, $search) {
+                $query->where('name', 'like', '%' . $search . '%');
+            })
+            ->paginate(15)
+            ->withQueryString();
+
+        return view('dashboard.pages.technologies.index', compact('tools', 'search'));
     }
 
     /**
