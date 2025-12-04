@@ -23,8 +23,8 @@ Route::name('website.')->group(function () {
     Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
     Route::get('/portfolio-details/{slug}', [PortfolioController::class, 'showDetails'])->name('portfolio-details');
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
-    // Route::get('/blog-details/{slug}', [BlogController::class, 'showDetails'])->name('blog-details');
-    Route::get('/blog-details', [BlogController::class, 'showDetails'])->name('blog-details');
+    Route::get('/blog-details/{slug}', [BlogController::class, 'showDetails'])->name('blog-details');
+
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
     Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 });

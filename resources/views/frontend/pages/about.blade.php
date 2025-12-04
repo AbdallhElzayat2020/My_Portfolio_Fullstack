@@ -89,76 +89,43 @@
 
 
                                 {{-- article and blogs --}}
-                                <div class="article-publications">
-                                    <h2 class="main-common-title">Article and Publications</h2>
-                                    <div class="article-publications-main">
-                                        <div class="row article-publications-slider">
-
-                                            <div class="col-lg-6">
-                                                <div class="article-publications-item">
-                                                    <div class="image">
-                                                        <a href="article.html" class="d-block w-100">
-                                                            <img src="{{ asset('assets/frontend/img/blog/blog-img-1.jpg') }}"
-                                                                alt="blog-img-1" class="img-fluid w-100">
-                                                        </a>
-                                                        <a href="article.html" class="tags">Development</a>
+                                @if(isset($latestBlogs) && $latestBlogs->count() > 0)
+                                    <div class="article-publications">
+                                        <h2 class="main-common-title">Article and Publications</h2>
+                                        <div class="article-publications-main">
+                                            <div class="row article-publications-slider">
+                                                @foreach($latestBlogs as $blog)
+                                                    @php
+                                                        $blogImageUrl = $blog->image->url ?? asset('assets/frontend/img/blog/blog-img-1.jpg');
+                                                        $categoryName = $blog->category->name ?? 'General';
+                                                        $readTime = ceil(str_word_count(strip_tags($blog->full_desc)) / 200);
+                                                    @endphp
+                                                    <div class="col-lg-6">
+                                                        <div class="article-publications-item">
+                                                            <div class="image">
+                                                                <a href="{{ route('website.blog-details', $blog->slug) }}"
+                                                                    class="d-block w-100">
+                                                                    <img src="{{ $blogImageUrl }}" alt="{{ $blog->full_name }}"
+                                                                        class="img-fluid w-100">
+                                                                </a>
+                                                                <a href="{{ route('website.blog-details', $blog->slug) }}"
+                                                                    class="tags">{{ $categoryName }}</a>
+                                                            </div>
+                                                            <div class="text">
+                                                                <a href="{{ route('website.blog-details', $blog->slug) }}"
+                                                                    class="title">{{ $blog->full_name }}</a>
+                                                                <ul class="list-unstyled">
+                                                                    <li>{{ $readTime }} min read</li>
+                                                                    <li>{{ $blog->created_at->format('M d, Y') }}</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="text">
-                                                        <a href="article.html" class="title">Want To Upgrade Your
-                                                            Brain? Stop Doing These 7
-                                                            Things</a>
-                                                        <ul class="list-unstyled">
-                                                            <li>15 min read</li>
-                                                            <li>Nov 6, 2023</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6">
-                                                <div class="article-publications-item">
-                                                    <div class="image">
-                                                        <a href="article.html" class="d-block w-100">
-                                                            <img src="{{ asset('assets/frontend/img/blog/blog-img-1.jpg') }}"
-                                                                alt="blog-img-1" class="img-fluid w-100">
-                                                        </a>
-                                                        <a href="article.html" class="tags">Development</a>
-                                                    </div>
-                                                    <div class="text">
-                                                        <a href="article.html" class="title">Want To Upgrade Your
-                                                            Brain? Stop Doing These 7
-                                                            Things</a>
-                                                        <ul class="list-unstyled">
-                                                            <li>15 min read</li>
-                                                            <li>Nov 6, 2023</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6">
-                                                <div class="article-publications-item">
-                                                    <div class="image">
-                                                        <a href="article.html" class="d-block w-100">
-                                                            <img src="{{ asset('assets/frontend/img/blog/blog-img-1.jpg') }}"
-                                                                alt="blog-img-1" class="img-fluid w-100">
-                                                        </a>
-                                                        <a href="article.html" class="tags">Development</a>
-                                                    </div>
-                                                    <div class="text">
-                                                        <a href="article.html" class="title">Want To Upgrade Your
-                                                            Brain? Stop Doing These 7
-                                                            Things</a>
-                                                        <ul class="list-unstyled">
-                                                            <li>15 min read</li>
-                                                            <li>Nov 6, 2023</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
 
                                 {{-- work together slider --}}
                                 @include('frontend.components.work-gether')
