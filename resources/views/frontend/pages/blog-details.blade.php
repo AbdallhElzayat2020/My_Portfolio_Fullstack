@@ -62,22 +62,6 @@
                                                                 <i class="fab fa-facebook"></i>
                                                             </a>
                                                         </li>
-                                                        <li>
-                                                            <a href="https://pinterest.com/pin/create/button/?url={{ urlencode(request()->fullUrl()) }}&description={{ urlencode($blog->full_name) }}"
-                                                                target="_blank">
-                                                                <i class="fab fa-pinterest"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="https://github.com" target="_blank">
-                                                                <i class="fab fa-github"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="https://www.youtube.com" target="_blank">
-                                                                <i class="fab fa-youtube"></i>
-                                                            </a>
-                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
