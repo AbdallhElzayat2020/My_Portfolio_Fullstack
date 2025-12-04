@@ -25,6 +25,11 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ServiceSeeder::class,
             ProjectSeeder::class,
+            BlogSeeder::class,
+            TestimonialSeeder::class,
+            BrandSeeder::class,
+            NumberSeeder::class,
+            FaqSeeder::class,
         ]);
 
         // Get admin role
