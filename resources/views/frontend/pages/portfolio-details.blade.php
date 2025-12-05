@@ -6,13 +6,11 @@
         <section class="content-box-area mt-4">
             <div class="container">
                 <div class="row g-4">
-
                     @include('frontend.components.intro-section', ['about' => $about])
-
                     <div class="col-xl-8">
                         <div class="card content-box-card">
                             <div class="card-body portfolio-card">
-                                <h1 class="main-title text-white my-2">{{ $project->full_title }}</h1>
+                                <h1 class="main-title my-2">{{ $project->full_title }}</h1>
                                 <div class="portfolio-details-area">
                                     <div class="main-image">
                                         <img src="{{ $project->image->first()->url }}" alt="project-details-1">
