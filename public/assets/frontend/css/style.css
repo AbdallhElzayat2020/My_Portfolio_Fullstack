@@ -700,7 +700,7 @@ p {
 }
 
 .services-item .image img {
-    width: 50px;
+    width: 50px !important;
 }
 
 .services-item .text .title {
