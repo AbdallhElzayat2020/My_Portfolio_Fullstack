@@ -30,7 +30,7 @@
                                                             <div class="image text-center">
                                                                 @if ($toolImageUrl)
                                                                     <img src="{{ $toolImageUrl }}" alt="{{ $toolName }}"
-                                                                        class="img-fluid" style="max-width: 40px;">
+                                                                         class="img-fluid" style="max-width: 40px;">
                                                                 @else
                                                                     <span
                                                                         class="badge bg-label-primary rounded-circle d-inline-flex align-items-center justify-content-center"
@@ -69,16 +69,16 @@
                                         </span>
                                     </div>
                                 @endif
-                                <h3 class="card-title">Recent Projects <a class="link-btn" href="#">All
+                                <h3 class="card-title">Recent Projects <a class="link-btn" href="{{ route('website.portfolio') }}">All
                                         Projects
                                         <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
+                                             xmlns="http://www.w3.org/2000/svg">
                                             <path d="M4.16699 10H15.8337" stroke="#4770FF" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
                                             <path d="M10.833 15L15.833 10" stroke="#4770FF" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
                                             <path d="M10.833 5L15.833 10" stroke="#4770FF" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
 
                                     </a></h3>
@@ -90,14 +90,14 @@
                                                     <div class="image">
                                                         <a href="{{ route('website.portfolio-details', $project->slug) }}">
                                                             <img src="{{ $project->image->first()->url }}"
-                                                                alt="{{ $project->full_title }}" class="img-fluid w-100">
+                                                                 alt="{{ $project->full_title }}" class="img-fluid w-100">
                                                         </a>
                                                         <a href="{{ $project->image->first()->url }}"
-                                                            class="gallery-popup full-image-preview parent-container">
+                                                           class="gallery-popup full-image-preview parent-container">
                                                             <svg class="icon" xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 0 20 20" fill="none" stroke="currentColor"
-                                                                stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="1.5">
+                                                                 viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                                 stroke-width="1.5">
                                                                 <path d="M10 4.167v11.666M4.167 10h11.666"></path>
                                                             </svg>
                                                         </a>
@@ -114,8 +114,6 @@
                                                 <p class="text-muted mb-0">No projects added yet.</p>
                                             </div>
                                         @endforelse
-
-
                                     </div>
                                 </div>
                             </div>
@@ -132,13 +130,13 @@
                                     <h3 class="card-title">Services I Offered
                                         <a class="link-btn" href="{{ route('website.services') }}"> See All Services
                                             <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
+                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M4.16699 10H15.8337" stroke="#4770FF" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                      stroke-linecap="round" stroke-linejoin="round"/>
                                                 <path d="M10.833 15L15.833 10" stroke="#4770FF" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                      stroke-linecap="round" stroke-linejoin="round"/>
                                                 <path d="M10.833 5L15.833 10" stroke="#4770FF" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                      stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
 
                                         </a>
@@ -205,11 +203,11 @@
                                     </h3>
                                     <a class="link-btn" href="https://wa.me/201212484233" target="_blank"> Let's Talk
                                         <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
+                                             xmlns="http://www.w3.org/2000/svg">
                                             <path d="M17.5 11.6665V6.6665H12.5" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round" />
+                                                  stroke-linejoin="round"/>
                                             <path d="M17.5 6.6665L10 14.1665L2.5 6.6665" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </a>
                                 </div>
