@@ -30,7 +30,6 @@ class AppServiceProvider extends ServiceProvider
             $brands = Brand::with('image')
                 ->where('status', 'active')
                 ->latest()
-                ->take(12)
                 ->get();
 
             $numbers = Number::latest()->first();
