@@ -22,9 +22,11 @@
                                             <b>4 years</b> of Experiences over 10+ Country Worldwide.
                                         </p>
                                     </div>
-                                    <div class="available-btn">
-                                        <span><i class="fas fa-circle"></i> Available For Hire</span>
-                                    </div>
+                                    @if(isset($isAvailableForHire) && $isAvailableForHire)
+                                        <div class="available-btn">
+                                            <span><i class="fas fa-circle"></i> Available For Hire</span>
+                                        </div>
+                                    @endif
                                 </div>
                                 {{-- counter area --}}
                                 <div class="counter-area">

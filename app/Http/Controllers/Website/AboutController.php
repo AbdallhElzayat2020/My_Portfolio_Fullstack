@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Models\About;
 use App\Models\Blog;
+use App\Models\AvailableForHire;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,6 +19,8 @@ class AboutController extends Controller
             ->take(4)
             ->get();
 
-        return view('frontend.pages.about', compact('latestBlogs'));
+        $isAvailableForHire = AvailableForHire::getStatus();
+
+        return view('frontend.pages.about', compact('latestBlogs', 'isAvailableForHire'));
     }
 }

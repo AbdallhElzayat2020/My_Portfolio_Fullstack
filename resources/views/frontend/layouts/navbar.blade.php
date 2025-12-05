@@ -26,7 +26,9 @@
                     </div>
                     <ul class="navbar-info mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ route('website.home') }}">
+                            <a class="nav-link {{ request()->routeIs('website.home') ? 'active' : '' }}"
+                                aria-current="{{ request()->routeIs('website.home') ? 'page' : '' }}"
+                                href="{{ route('website.home') }}">
                                 <svg class="nav-icon" viewBox="0 0 15 15" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -39,7 +41,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('website.about') }}">
+                            <a class="nav-link {{ request()->routeIs('website.about') ? 'active' : '' }}"
+                                href="{{ route('website.about') }}">
                                 <svg class="nav-icon" viewBox="0 0 18 18" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -56,7 +59,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('website.services') }}">
+                            <a class="nav-link {{ request()->routeIs('website.services') ? 'active' : '' }}"
+                                href="{{ route('website.services') }}">
                                 <svg class="nav-icon" viewBox="0 0 16 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -71,7 +75,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('website.portfolio') }}">
+                            <a class="nav-link {{ request()->routeIs('website.portfolio', 'website.portfolio-details') ? 'active' : '' }}"
+                                href="{{ route('website.portfolio') }}">
                                 <svg class="nav-icon" viewBox="0 0 18 17" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -88,7 +93,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('website.blog') }}">
+                            <a class="nav-link {{ request()->routeIs('website.blog', 'website.blog-details') ? 'active' : '' }}"
+                                href="{{ route('website.blog') }}">
                                 <svg class="nav-icon" viewBox="0 0 17 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -102,7 +108,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('website.contact') }}">
+                            <a class="nav-link {{ request()->routeIs('website.contact') ? 'active' : '' }}"
+                                href="{{ route('website.contact') }}">
                                 <svg class="nav-icon" viewBox="0 0 18 17" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path d="M5.66699 5.5H12.3337" stroke-width="1.4" stroke-linecap="round"

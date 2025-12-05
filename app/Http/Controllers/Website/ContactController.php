@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Models\Contact;
 use App\Models\Service;
+use App\Models\AvailableForHire;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,7 +13,9 @@ class ContactController extends Controller
     public function index()
     {
         $services = Service::where('status', 'active')->get();
-        return view('frontend.pages.contact', compact('services'));
+        $isAvailableForHire = AvailableForHire::getStatus();
+
+        return view('frontend.pages.contact', compact('services', 'isAvailableForHire'));
     }
 
     public function store(Request $request)

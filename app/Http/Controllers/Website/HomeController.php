@@ -7,6 +7,7 @@ use App\Models\About;
 use App\Models\Tool;
 use App\Models\Service;
 use App\Models\Project;
+use App\Models\AvailableForHire;
 
 class HomeController extends Controller
 {
@@ -31,6 +32,8 @@ class HomeController extends Controller
             ->take(3)
             ->get();
 
-        return view('frontend.pages.home', compact('tools', 'services', 'homeProjects'));
+        $isAvailableForHire = AvailableForHire::getStatus();
+
+        return view('frontend.pages.home', compact('tools', 'services', 'homeProjects', 'isAvailableForHire'));
     }
 }

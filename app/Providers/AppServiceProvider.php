@@ -18,27 +18,26 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        Paginator::useBootstrapFive();
+        Paginator::useBootstrap();
 
         View::composer('frontend.pages.*', function ($view) {
             $about = About::with('image')->latest()->first();
             $testimonials = Testimonial::with('image')
                 ->where('status', 'active')
-
-                ->take(6)
+                ->latest()
                 ->get();
 
             $brands = Brand::with('image')
                 ->where('status', 'active')
-
-                ->take(10)
+                ->latest()
+                ->take(12)
                 ->get();
 
             $numbers = Number::latest()->first();
 
             $faqs = Faq::where('status', 'active')
                 ->orderBy('order')
-                ->orderByDesc('id')
+                ->latest()
                 ->get();
 
             $view->with([

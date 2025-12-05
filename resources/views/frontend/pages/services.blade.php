@@ -20,17 +20,19 @@
                                             Expert <b>Product
                                                 Design and Development</b> Services!</p>
                                     </div>
-                                    <div class="available-btn">
-                                        <span><i class="fas fa-circle"></i> Available For Hire</span>
-                                    </div>
+                                    @if (isset($isAvailableForHire) && $isAvailableForHire)
+                                        <div class="available-btn">
+                                            <span><i class="fas fa-circle"></i> Available For Hire</span>
+                                        </div>
+                                    @endif
                                 </div>
                                 {{-- services --}}
                                 <div class="services">
                                     <div class="row g-4">
                                         @forelse (($services ?? collect()) as $service)
                                             @php
-    $serviceName = data_get($service, 'name', '');
-    $serviceIconUrl = data_get($service, 'image.url');
+                                                $serviceName = data_get($service, 'name', '');
+                                                $serviceIconUrl = data_get($service, 'image.url');
                                             @endphp
                                             <div class="col-md-3 col-sm-6 col-6">
                                                 <div class="services-item text-center">
@@ -57,9 +59,9 @@
                                         @endforelse
                                     </div>
 
-                                    <div class="mt-3">
+                                    {{-- <div class="mt-3">
                                         {{ $services->links() }}
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 {{-- working with area --}}
                                 @include('frontend.components.brands')

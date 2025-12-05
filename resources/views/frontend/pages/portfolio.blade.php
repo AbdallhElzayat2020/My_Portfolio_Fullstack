@@ -65,6 +65,11 @@
                                             @endforeach
                                         </div>
 
+                                        @if ($projects->hasPages())
+                                            <div class="pagination">
+                                                {{ $projects->links() }}
+                                            </div>
+                                        @endif
                                     </div>
 
                                 </div>

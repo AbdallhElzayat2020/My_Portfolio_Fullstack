@@ -15,6 +15,7 @@ use App\Http\Controllers\Dashboard\{
     UserController,
     BrandController,
     FaqController,
+    AvailableForHireController,
 };
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -188,6 +189,10 @@ Route::middleware(['auth'])->group(function () {
         'update' => 'users.update',
         'destroy' => 'users.destroy',
     ]);
+
+    // Available For Hire Routes
+    Route::get('available-for-hire/edit', [AvailableForHireController::class, 'edit'])->name('available-for-hire.edit');
+    Route::put('available-for-hire', [AvailableForHireController::class, 'update'])->name('available-for-hire.update');
 });
 
 require __DIR__ . '/auth.php';

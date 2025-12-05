@@ -114,6 +114,15 @@
             </li>
         @endif
 
+        @if (auth()->user()->isAdmin() || auth()->user()->hasPermission(5))
+            <li class="menu-item {{ \App\Helpers\setSidebarActive(['available-for-hire.*'], 'active open') }}">
+                <a href="{{ route('available-for-hire.edit') }}" class="menu-link">
+                    <i class="menu-icon tf-icons ti ti-briefcase"></i>
+                    <div data-i18n="Available For Hire">Available For Hire</div>
+                </a>
+            </li>
+        @endif
+
         @if (auth()->user()->isAdmin() || auth()->user()->hasPermission(14))
             <li class="menu-item {{ \App\Helpers\setSidebarActive(['main-steps.*'], 'active open') }}">
                 <a href="{{ route('main-steps.index') }}" class="menu-link">
