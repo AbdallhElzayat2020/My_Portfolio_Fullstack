@@ -29,6 +29,7 @@ class HomeController extends Controller
             ->where('status', 'active')
             ->where('in_home', true)
             ->where('is_featured', true)
+            ->oldest()
             ->take(3)
             ->get();
 
