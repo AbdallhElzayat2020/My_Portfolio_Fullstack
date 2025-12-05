@@ -14,7 +14,7 @@ class PortfolioController extends Controller
 
         $projects = Project::with(['image', 'category'])
             ->where('status', 'active')
-            ->orderByDesc('id')
+            ->oldest()
             ->paginate(6);
 
         $isAvailableForHire = AvailableForHire::getStatus();
