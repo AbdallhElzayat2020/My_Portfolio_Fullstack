@@ -18,14 +18,13 @@
                                         <img src="{{ $project->image->first()->url }}" alt="project-details-1">
                                     </div>
                                     <div class="portfolio-details-text">
-                                        <div class="short-info">
-                                            <div class="info-item">
-                                                <p class="subtitle">Category:</p>
-                                                <h4 class="card-title">{{ $project->category->name ?? '-' }}</h4>
-                                            </div>
-
-                                        </div>
                                         <div class="overview">
+                                            <div class="short-info">
+                                                <div class="info-item">
+                                                    <p class="subtitle">Category:</p>
+                                                    <h4 class="card-title">{{ $project->category->name ?? '-' }}</h4>
+                                                </div>
+                                            </div>
                                             <h4 class="card-title">Overview</h4>
                                             <p>{!! $project->full_desc !!}</p>
                                         </div>
