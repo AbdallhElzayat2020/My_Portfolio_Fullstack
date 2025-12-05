@@ -22,15 +22,15 @@
                                             <div class="row g-3">
                                                 @forelse(($tools ?? collect()) as $tool)
                                                     @php
-    $toolName = data_get($tool, 'name', '');
-    $toolImageUrl = data_get($tool, 'image.url');
+                                                        $toolName = data_get($tool, 'name', '');
+                                                        $toolImageUrl = data_get($tool, 'image.url');
                                                     @endphp
                                                     <div class="col-xl-4 col-md-4 col-sm-6 col-6">
                                                         <div class="expertise-item">
                                                             <div class="image text-center">
                                                                 @if ($toolImageUrl)
                                                                     <img src="{{ $toolImageUrl }}" alt="{{ $toolName }}"
-                                                                        class="img-fluid" style="max-width: 40px;">
+                                                                         class="img-fluid" style="max-width: 40px;">
                                                                 @else
                                                                     <span
                                                                         class="badge bg-label-primary rounded-circle d-inline-flex align-items-center justify-content-center"
@@ -70,13 +70,13 @@
                                 <h3 class="card-title">Recent Projects <a class="link-btn" href="#">All
                                         Projects
                                         <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
+                                             xmlns="http://www.w3.org/2000/svg">
                                             <path d="M4.16699 10H15.8337" stroke="#4770FF" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
                                             <path d="M10.833 15L15.833 10" stroke="#4770FF" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
                                             <path d="M10.833 5L15.833 10" stroke="#4770FF" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
 
                                     </a></h3>
@@ -90,11 +90,11 @@
                                                             <img src="{{ $project->image->first()->url }}" alt="{{ $project->full_title }}" class="img-fluid w-100">
                                                         </a>
                                                         <a href="{{ $project->image->first()->url }}"
-                                                            class="gallery-popup full-image-preview parent-container">
+                                                           class="gallery-popup full-image-preview parent-container">
                                                             <svg class="icon" xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 0 20 20" fill="none" stroke="currentColor"
-                                                                stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="1.5">
+                                                                 viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                                                                 stroke-linecap="round" stroke-linejoin="round"
+                                                                 stroke-width="1.5">
                                                                 <path d="M10 4.167v11.666M4.167 10h11.666"></path>
                                                             </svg>
                                                         </a>
@@ -129,13 +129,13 @@
                                     <h3 class="card-title">Services I Offered
                                         <a class="link-btn" href="{{ route('website.services') }}"> See All Services
                                             <svg class="icon" width="20" height="20" viewBox="0 0 20 20"
-                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M4.16699 10H15.8337" stroke="#4770FF" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                      stroke-linecap="round" stroke-linejoin="round"/>
                                                 <path d="M10.833 15L15.833 10" stroke="#4770FF" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                      stroke-linecap="round" stroke-linejoin="round"/>
                                                 <path d="M10.833 5L15.833 10" stroke="#4770FF" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                      stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
 
                                         </a>
@@ -145,15 +145,15 @@
                                         <div class="row g-4">
                                             @forelse(($services ?? collect()) as $service)
                                                 @php
-    $serviceName = data_get($service, 'name', '');
-    $serviceIconUrl = data_get($service, 'image.url');
+                                                    $serviceName = data_get($service, 'name', '');
+                                                    $serviceIconUrl = data_get($service, 'image.url');
                                                 @endphp
                                                 <div class="col-md-3 col-sm-6 col-6">
                                                     <div class="services-item text-center">
                                                         <div class="image">
                                                             @if ($serviceIconUrl)
                                                                 <img src="{{ $serviceIconUrl }}"
-                                                                    alt="{{ $serviceName }}">
+                                                                     alt="{{ $serviceName }}">
                                                             @else
                                                                 <span
                                                                     class="badge bg-label-primary rounded-circle d-inline-flex align-items-center justify-content-center"
@@ -197,11 +197,11 @@
                                     </h3>
                                     <a class="link-btn" href=""> Let's Talk
                                         <svg class="icon" width="20" height="20" viewBox="0 0 20 20"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M17.5 11.6665V6.6665H12.5" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round" />
+                                                  stroke-linejoin="round"/>
                                             <path d="M17.5 6.6665L10 14.1665L2.5 6.6665" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </a>
                                 </div>

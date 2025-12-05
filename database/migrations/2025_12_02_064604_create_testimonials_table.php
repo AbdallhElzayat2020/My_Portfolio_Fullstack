@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
             $table->string('client_name');
-            $table->string('client_description');
+            $table->longText('client_description');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->string('job')->nullable();
             $table->timestamps();
