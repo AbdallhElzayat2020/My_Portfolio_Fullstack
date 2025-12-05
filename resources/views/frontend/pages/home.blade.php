@@ -203,7 +203,7 @@
                                     <h3 class="card-title">Let's👋
                                         <span class="d-block">Work Together</span>
                                     </h3>
-                                    <a class="link-btn" href=""> Let's Talk
+                                    <a class="link-btn" href="https://wa.me/201212484233" target="_blank"> Let's Talk
                                         <svg class="icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path d="M17.5 11.6665V6.6665H12.5" stroke-width="1.5" stroke-linecap="round"
